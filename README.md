@@ -11,3 +11,9 @@ También se han subido diversas fotos de las distintas placas para poder realiza
 Con los sistemas se van a hacer capturas de los distintos buses para que todos los que quieran puedan colaborar en el análisis de las tramas de los mismos.
 # Código fuente (src)
 Se realizarán librerías para comunicar con los distintos buses desde desarrollos basados en Arduino (Uno, Mega, ESP8266 y ESP32)
+# Protocolo BUS 2 - Accesorios
+El bus es de especificación eléctrica RS485. Tiene dos señales A-B junto con una señal de 12V y GND.
+Transmite tramas a una velocidad de 19200 baudios.
+Utiliza un protocolo derivado del HDLC. Utiliza marcas de inicio y fin de trama: "0x7E"
+El formato es indicandose los bytes como [xx]:
+[0x7E] [Longitud] [Tipo] [Dirección de destino] [N bytes indicados en el campo longitud...] [Chequeo de trama con la suma de todos los bytes][0x7E]

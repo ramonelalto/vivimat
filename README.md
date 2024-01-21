@@ -38,9 +38,19 @@ El formato es indicandose los bytes como [xx]:
 ## Consulta periódica a módulo de persiana.
 Se realiza constantemente la consulta uno a uno de todos los módulos del bus.  
 El módulo contesta con su estado. Ejemplo:  
-### Placa principal a módulo:
+### Placa principal a módulo de persiana de dirección 1:
 #0 | #1 | #2 | #3 | #4 | #5 | #6 
---- | --- | --- | --- |--- |--- |--- |--- 
+--- | --- | --- | --- | --- | --- | ---  
 [0x7E] | [Longitud] | [Tipo] | [Dirección de destino] | [N bytes indicados en el campo longitud...] | [Chequeo de trama con la suma de todos los bytes] | [0x7E] 
---- | --- | --- | --- |--- |--- |--- 
+--- | --- | --- | --- | --- | --- | --- 
 [0x7E] | [0x01] | [0x08] | [0x01] | [0x02] | [0x0C] | [0x7E]
+El dato es 0x02 que indica la consulta del estado.
+### Módulo de persiana de dirección 1 a placa principal:
+#0 | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8
+--- | --- | --- | --- | --- | --- | ---  
+[0x7E] | [Longitud] | [Tipo] | [Dirección de destino] | [Dato1] | [Dato2] | [Dato3] | [Chequeo de trama con la suma de todos los bytes] | [0x7E] 
+--- | --- | --- | --- | --- | --- | --- 
+[0x7E] | [0x03] | [0x00] | [0xF0] | [0x03] | [0x0A] | [0x01] | [0x01] | [0x7E]
+* Dato 1 - 0x03 indica respuesta a la consulta de estado
+* Dato 2 - 0x0A es el valor de estado de posición de la persiana siendo 0x00 abajo y 0x0A arriba ( se indica el valor en los valores: 0,2,4,6,8,10)
+* Dato 3 - 0x01 es el valor de estado de movimiento, esto es, si sube (0x01) baja (0x02) o está parada (0x00).

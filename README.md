@@ -1,7 +1,7 @@
-# vivimat
+# Vivimat de Dinitel
 Análisis de los sistemas Vivimat III
 # Introducción
-Desde 2018 la empresa Dinitel ha cerrado y ha dejado los sistemas propietarios que distribuian completamente  desasistidos.
+Desde 2018 la empresa Dinitel ha cerrado y ha dejado los sistemas propietarios que distribuían completamente  desasistidos.
 Las empresas de domótica que acuden ante la llamada de asistencia de los usuarios solo recomiendan su sustitución.
 Existe un montón de dispositivos en venta en segunda mano por retirada de las instalaciones.
 En este proyecto se va a estudiar el sistema para intentar reutilizar los sistemas existentes integrándolos en otros y para poder crear un ecosistema de sustitución a partir de desarrollos DIY.

@@ -17,3 +17,6 @@ Transmite tramas a una velocidad de 19200 baudios.
 Utiliza un protocolo derivado del HDLC. Utiliza marcas de inicio y fin de trama: "0x7E"
 El formato es indicandose los bytes como [xx]:
 [0x7E] [Longitud] [Tipo] [Dirección de destino] [N bytes indicados en el campo longitud...] [Chequeo de trama con la suma de todos los bytes][0x7E]
+#0 | #1 | #2 | #3 | #4 | #5 | #6 | #7 
+--- | --- | --- | --- |--- |--- |--- |--- 
+[0x7E] | [Longitud] | [Tipo] | [Dirección de destino] | [N bytes indicados en el campo longitud...] | [...] | [Chequeo de trama con la suma de todos los bytes] | [0x7E]

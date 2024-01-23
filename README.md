@@ -11,6 +11,30 @@ También se han subido diversas fotos de las distintas placas para poder realiza
 Con los sistemas se van a hacer capturas de los distintos buses para que todos los que quieran puedan colaborar en el análisis de las tramas de los mismos.
 # Código fuente (src)
 Se realizarán librerías para comunicar con los distintos buses desde desarrollos basados en Arduino (Uno, Mega, ESP8266 y ESP32)
+
+# Protocolo BUS 1 - Comunicaciones
+Este bus se conecta a los módulos de Displays, WEBserver y módulo APP  
+* El bus es de especificación eléctrica RS485.
+* Tiene dos señales A-B junto con una señal de 12V y GND.
+* Transmite tramas a una velocidad de 19200 baudios.
+* Utiliza un protocolo derivado del HDLC:
+ * Utiliza marcas de inicio y fin de trama: "0x7E".
+ * Utiliza la sustitución de la aparición de 0x7E por [0x7D][0x5E] y la aparición de 0x7D por [0x7D][0x5D].
+
+El formato es indicandose los bytes como [xx]:  
+  
+#0 | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 
+--- | --- | --- | --- |--- |--- |--- |--- |--- 
+[0x7E] | [Longitud_H] | [Longitud_L] | [Tipo] | [Dirección de destino] | [N bytes indicados en el campo longitud...] | [...] | [Chequeo de trama con la suma de todos los bytes] | [0x7E]  
+
+* Inicio de trama = 0x7E
+* Longitud = Longitud_H * 256 + Longitud_L  - Es el número de bytes a continuación del campo "Dirección de destino" y hasta antes del "Chequeo de trama con la suma de todos los bytes".
+* Tipo - Es el tipo de dispositivo, por ejemplo: 0x01 para displays y módulo APP y ¿0x03 para el web server?  (No dispongo de este módulo).
+* Dirección de destino - Es el valor de los dispositivos.
+* N bytes indicados en el campo longitud... - Esta es la información propiamente dicha. Se especifican ejemplos a continuación.
+* Chequeo de trama con la suma de todos los bytes - Es la simple suma de todos los bytes desde "Longitud" hasta el fin de los datos.
+* Fin de trama = 0x7E
+  
 # Protocolo BUS 2 - Accesorios
 Este bus se conecta a los módulos de control de persianas (Tipo MOD-0106-N) que se les indica su dirección mediante switches (ver fotos en documentación)  
 * El bus es de especificación eléctrica RS485.

@@ -25,7 +25,7 @@ El formato es indicandose los bytes como [xx]:
   
 #0 | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 
 --- | --- | --- | --- |--- |--- |--- |--- |--- 
-[0x7E] | [Longitud_H] | [Longitud_L] | [Tipo] | [Dirección de destino] | [N bytes indicados en el campo longitud...] | [...] | [Chequeo de trama con la suma de todos los bytes] | [0x7E]  
+[0x7E] | [Longitud_L] | [Longitud_H] | [Tipo] | [Dirección de destino] | [N bytes indicados en el campo longitud...] | [...] | [Chequeo de trama con la suma de todos los bytes] | [0x7E]  
 
 * Inicio de trama = 0x7E
 * Longitud = Longitud_H * 256 + Longitud_L  - Es el número de bytes a continuación del campo "Dirección de destino" y hasta antes del "Chequeo de trama con la suma de todos los bytes".

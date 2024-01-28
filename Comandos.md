@@ -5,9 +5,17 @@ Denominaremos comandos a ambos tipos de respuesta a la ronda de contacto. Por ej
 ## Ronda con OK de respuesta:
 Ronda de consulta de la placa principal(MB) al dispositivo (DISPLAY) tipo 1 con dirección 2. 
 
-MB to DISPLAY: MARK(7E) - LONGITUD(L:17 H:00) - TYPE(01) - ADDRESS(02) - DATOS[FF 80 00 00 00 01 01 DA 07 05 02 13 34 00 00 03 00 0A 00 00 00 00 00] - SUM(D7) - MARK(7E)
+MB to DISPLAY: 
+7E 17 00 01 02 FF 80 00 00 00 01 01 DA 07 05 02 13 34 00 00 03 00 0A 00 00 00 00 00 D7 7E
+
+MARK | LONGITUD(L:17 H:00) | TYPE | ADDRESS | DATOS | SUM | MARK
+--- | --- | --- | --- | --- | --- | --- 
+7E | 0017 | 01 | 02 | FF 80 00 00 00 01 01 DA 07 05 02 13 34 00 00 03 00 0A 00 00 00 00 00 | D7 | 7E
   
-  DISPLAY to MB:MARK(7E) - LONGITUD(L:01 H:00) -  TYPE(00) - ADDRESS(F0) - DATOS[00] - SUM(F1) - MARK(7E)
+  DISPLAY to MB:
+MARK | LONGITUD(L:01 H:00) | TYPE | ADDRESS | DATOS | SUM | MARK
+--- | --- | --- | --- | --- | --- | ---
+7E | 0001 | 00 | F0 | 00 | F1 | 7E
 
 ## Ronda con Petición de respuesta:
 Ronda de consulta de la placa principal(MB) al dispositivo (DISPLAY) tipo 1 con dirección 2. 

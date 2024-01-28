@@ -1,7 +1,41 @@
 # Introducción
 La placa principal sondea los dispositivos de forma secuencial. Les envía una serie de datos de estado, entre ellos la fecha y hora.
 Los módulos pueden responder con un OK o enviar un comando para realizar una actuación, con lo que la placa principal contestaría OK, o pedir una información con lo que la placa principal responderá con ellos.
-Denominaremos comandos a ambos tipos de respuesta a la ronda de contacto. Por ejemplo:
+Denominaremos peticiones, comandos y respuestas a la respuesta a la ronda de contacto.
+## Formato de la ronda de sondeo:
+MB to DISPLAY: 
+7E 17 00 01 02 FF 80 00 00 00 01 01 DA 07 05 02 13 34 00 00 03 00 0A 00 00 00 00 00 D7 7E
+
+MARK | LONGITUD(L:17 H:00) | TYPE | ADDRESS | DATOS | SUM | MARK
+--- | --- | --- | --- | --- | --- | --- 
+7E | 0017 | 01 | 02 | FF 80 00 00 00 01 01 DA 07 05 02 13 34 00 00 03 00 0A 00 00 00 00 00 | D7 | 7E
+
+Significado de los datos:
+#Dato | #Significado
+FF | Código de ronda
+80 |
+00 |
+00 |
+00 |
+01 | Día
+01 | Mes
+DA | Año (Low)
+07 | Año (High)
+05 | Día de la semana
+02 | Hora
+13 | Minuto
+34 | Segundo
+00 | 
+00 | 
+03 | Status: Bit0= 1 siempre?, Bit1= 0 Armado alarma, 1 Desarmado alarma, Bit2= 0 Armado o no armado alarma, 1 : Armando durante el timer de la alarma
+00 | Memoria alarma: 0 No se ha armado nunca la alarma, 1 Armado perimetral, 2 Armado Parcial y 3 Armado Total
+0A |
+00 |
+00 |
+00 |
+00 |
+00 |
+
 
 ## Ronda con OK de respuesta:
 Ronda de consulta de la placa principal(MB) al dispositivo (DISPLAY) tipo 1 con dirección 2. 

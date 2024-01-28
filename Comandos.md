@@ -11,20 +11,22 @@ MARK | LONGITUD(L:17 H:00) | TYPE | ADDRESS | DATOS | SUM | MARK
 7E | 0017 | 01 | 02 | FF 80 00 00 00 01 01 DA 07 05 02 13 34 00 00 03 00 0A 00 00 00 00 00 | D7 | 7E
 
 Significado de los datos:
-#Dato | #Significado
-FF | Código de ronda
+
+#Dato | #Significado 
+ --- | ---
+FF | Código de ronda 
 80 |
 00 |
 00 |
 00 |
-01 | Día
-01 | Mes
+01 | Día: 1
+01 | Mes: enero
 DA | Año (Low)
-07 | Año (High)
-05 | Día de la semana
-02 | Hora
-13 | Minuto
-34 | Segundo
+07 | Año (High) 2010 (0x07DA)
+05 | Día de la semana: Viernes
+02 | Hora: 2
+13 | Minuto: 19
+34 | Segundo: 52
 00 | 
 00 | 
 03 | Status: Bit0= 1 siempre?, Bit1= 0 Armado alarma, 1 Desarmado alarma, Bit2= 0 Armado o no armado alarma, 1 : Armando durante el timer de la alarma
